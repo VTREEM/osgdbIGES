@@ -59,7 +59,7 @@ INCLUDE_DIRECTORIES( ${INCLUDE_DIRECTORIES} ${OSGUTIL_INCLUDE_DIR} )
 INCLUDE_DIRECTORIES( ${INCLUDE_DIRECTORIES} ${OSG_BINARY_DIR}/include ) # For the generated Config file
 
 
-# - - - - - - - - - - - - - osgocc library - - - - - - - - - -
+# - - - - - - - - - - - - - BRepConverter library - - - - - - - - - -
 
 set(OSGOCC_HEADER_FILES 
   src/BRepConverter.h
@@ -73,14 +73,14 @@ set(OSGOCC_SOURCE_FILES
 
 INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${OCC_INCLUDE_DIR})
 
-ADD_LIBRARY(osgocc SHARED ${OSGOCC_HEADER_FILES} ${OSGOCC_SOURCE_FILES})
+ADD_LIBRARY(BRepConverter SHARED ${OSGOCC_HEADER_FILES} ${OSGOCC_SOURCE_FILES})
 
-TARGET_LINK_LIBRARIES(osgocc TKernel TKMath TKBRep TKGeomBase TKGeomAlgo TKG3d TKG2d TKShHealing TKTopAlgo TKMesh TKPrim TKBool TKBO TKFillet TKSTEP TKSTEPBase TKSTEPAttr TKXSBase TKSTEP209 TKIGES TKOffset TKLCAF TKXCAF TKXDEIGES)
+TARGET_LINK_LIBRARIES(BRepConverter TKernel TKMath TKBRep TKGeomBase TKGeomAlgo TKG3d TKG2d TKShHealing TKTopAlgo TKMesh TKPrim TKBool TKBO TKFillet TKSTEP TKSTEPBase TKSTEPAttr TKXSBase TKSTEP209 TKIGES TKOffset TKLCAF TKXCAF TKXDEIGES)
 
-TARGET_LINK_LIBRARIES( osgocc ${OPENTHREADS_LIBRARY} )
-TARGET_LINK_LIBRARIES( osgocc ${OSG_LIBRARY} )
-TARGET_LINK_LIBRARIES( osgocc ${OSGDB_LIBRARY} )
-TARGET_LINK_LIBRARIES( osgocc ${OSGUTIL_LIBRARY} )
+TARGET_LINK_LIBRARIES( BRepConverter ${OPENTHREADS_LIBRARY} )
+TARGET_LINK_LIBRARIES( BRepConverter ${OSG_LIBRARY} )
+TARGET_LINK_LIBRARIES( BRepConverter ${OSGDB_LIBRARY} )
+TARGET_LINK_LIBRARIES( BRepConverter ${OSGUTIL_LIBRARY} )
 
 # - - - - - - - - - - - - - osgdb_iges plugin - - - - - - - - - -
 
@@ -94,7 +94,7 @@ set(OSGDBIGES_SOURCE_FILES
 
 ADD_LIBRARY(osgdb_iges SHARED ${OSGDBIGES_HEADER_FILES} ${OSGDBIGES_SOURCE_FILES})
 
-TARGET_LINK_LIBRARIES( osgdb_iges osgocc )
+TARGET_LINK_LIBRARIES( osgdb_iges BRepConverter )
 
 SET_TARGET_PROPERTIES(osgdb_iges PROPERTIES PREFIX "") # Remove the leading 'lib' to match the OSG plugins naming conventions
 SET_TARGET_PROPERTIES(osgdb_iges PROPERTIES SUFFIX ".so") # to match the OSG plugins naming conventions (so that osgDB can load the file at runtime)
