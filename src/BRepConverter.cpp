@@ -89,12 +89,12 @@ BRepConverter::brepToOSGGeode(TDocStd_Document& doc)
 
     if(freeShapes.Length() == 0)
     {
-        std::cout << "No Shapes found" << endl;
+        std::cout << "No Shapes found" << std::endl;
         return NULL;
     }
     else
     {
-        std::cout << std::endl << "No of Free Shapes: " << freeShapes.Length();
+        std::cout << std::endl << "No of Free Shapes: " << freeShapes.Length() << std::endl;
     }
 
     _modelGeode = new osg::Geode();

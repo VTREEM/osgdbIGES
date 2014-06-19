@@ -42,7 +42,7 @@ ReaderWriterIGES::readNode(const std::string& fileName, const osgDB::ReaderWrite
     if (file.empty()) 
         return ReadResult::FILE_NOT_FOUND;
 
-    OSG_INFO << "ReaderWriterIGES::readNode(" << file.c_str() << ")\n";
+    OSG_INFO << "ReaderWriterIGES::readNode(" << file.c_str() << ")" << std::endl;
 
     return igesToOSGGeode(fileName).get();
 }
